@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @SpringBootTest
 class FridgeTest {
 	@Test
-	void tracksAndDisplaysAddedItemsExpiry() {
+	void tracks_and_displays_added_items_expiry() {
 
 		//Given
 		String expectedOutput = "EXPIRED: Milk\n" +
