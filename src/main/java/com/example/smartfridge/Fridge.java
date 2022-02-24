@@ -1,6 +1,14 @@
 package com.example.smartfridge;
 
+import com.example.smartfridge.unit.Clock;
+
 public class Fridge {
+    private Clock clock;
+
+    public Fridge(Clock clock) {
+        this.clock = clock;
+    }
+
     public String showDisplay() {
         throw new UnsupportedOperationException();
     }
@@ -23,5 +31,9 @@ public class Fridge {
 
     public void scanRemovedItem(String item) {
         throw new UnsupportedOperationException();
+    }
+
+    public void setCurrentDate(String date) {
+        clock.setDate(date);
     }
 }
