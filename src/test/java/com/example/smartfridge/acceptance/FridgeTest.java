@@ -1,8 +1,6 @@
 package com.example.smartfridge.acceptance;
 
-import com.example.smartfridge.Fridge;
-import com.example.smartfridge.unit.Clock;
-import com.example.smartfridge.unit.FridgeClock;
+import com.example.smartfridge.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -19,7 +17,8 @@ class FridgeTest {
 				"Peppers: 1 day remaining\n" +
 				"Cheese: 31 days remaining";
 		Clock clock = new FridgeClock();
-		Fridge fridge = new Fridge(clock);
+		ItemsService itemsService = new ItemsService();
+		Fridge fridge = new Fridge(clock, itemsService);
 		fridge.setCurrentDate("18/10/2021");
 
 		// When

@@ -1,4 +1,4 @@
-package com.example.smartfridge.unit;
+package com.example.smartfridge;
 
 public class FridgeClock implements Clock {
     @Override

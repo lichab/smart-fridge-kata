@@ -1,6 +1,6 @@
 package com.example.smartfridge.unit;
 
-import com.example.smartfridge.Fridge;
+import com.example.smartfridge.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -12,12 +12,19 @@ import static org.mockito.Mockito.*;
 
 @SpringBootTest
 public class FridgeShould {
-    @Mock Clock clock;
+    @Mock
+    Clock clock;
+    @Mock
+    ItemRepository itemRepository;
+    @Mock
+    Item item;
     private Fridge fridge;
+    @Mock
+    ItemsService itemsService;
 
     @BeforeEach void
     set_up(){
-        fridge = new Fridge(clock);
+        fridge = new Fridge(clock, itemsService);
     }
 
     @Test void
@@ -34,18 +41,12 @@ public class FridgeShould {
 
     @Test void
     update_items_expiry_date_when_door_is_opened(){
-        //Given
-        var item = mock(Item.class);
-        List<Item> items = List.of(item, item, item);
-        ItemRepository itemsRepository = mock(ItemRepository.class);
-        when(itemsRepository.getAll()).thenReturn(items);
 
         //When
         fridge.signalFridgeDoorOpened();
 
         //Then
-        verify(itemsRepository).getAll();
-        verify(item, times(items.size())).updateExpiry();
+        verify(itemsService).updateExpiry();
     }
 
 

@@ -1,12 +1,14 @@
 package com.example.smartfridge;
 
-import com.example.smartfridge.unit.Clock;
+import java.util.List;
 
 public class Fridge {
     private Clock clock;
+    private ItemsService itemsService;
 
-    public Fridge(Clock clock) {
+    public Fridge(Clock clock, ItemsService itemsService) {
         this.clock = clock;
+        this.itemsService = itemsService;
     }
 
     public String showDisplay() {
@@ -14,7 +16,7 @@ public class Fridge {
     }
 
     public void signalFridgeDoorOpened() {
-        throw new UnsupportedOperationException();
+        itemsService.updateExpiry();
     }
 
     public void scanAddedItem(String item, String expiry, String condition) {
@@ -36,4 +38,5 @@ public class Fridge {
     public void setCurrentDate(String date) {
         clock.setDate(date);
     }
+
 }

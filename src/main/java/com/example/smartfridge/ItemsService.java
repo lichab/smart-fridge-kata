@@ -1,6 +1,6 @@
-package com.example.smartfridge.unit;
+package com.example.smartfridge;
 
-public class Item {
+public class ItemsService {
     public void updateExpiry() {
         throw new UnsupportedOperationException();
     }
