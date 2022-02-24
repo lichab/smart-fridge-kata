@@ -20,7 +20,7 @@ public class Fridge {
     }
 
     public void scanAddedItem(String item, String expiry, String condition) {
-        throw new UnsupportedOperationException();
+        itemsService.record(item, expiry, condition);
     }
 
     public void signalFridgeDoorClosed() {

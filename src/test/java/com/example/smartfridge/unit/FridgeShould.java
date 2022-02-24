@@ -6,18 +6,12 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.util.List;
-
 import static org.mockito.Mockito.*;
 
 @SpringBootTest
 public class FridgeShould {
     @Mock
     Clock clock;
-    @Mock
-    ItemRepository itemRepository;
-    @Mock
-    Item item;
     private Fridge fridge;
     @Mock
     ItemsService itemsService;
@@ -47,6 +41,20 @@ public class FridgeShould {
 
         //Then
         verify(itemsService).updateExpiry();
+    }
+
+    @Test void
+    scan_and_record_added_items(){
+        //Given
+        String name = "itemName";
+        String expiry = "12/12/2020";
+        String condition = "sealed";
+
+        //When
+        fridge.scanAddedItem(name, expiry, condition);
+
+        //Then
+        verify(itemsService).record(name, expiry, condition);
     }
 
 
