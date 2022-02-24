@@ -5,7 +5,7 @@ public class ItemsService {
         throw new UnsupportedOperationException();
     }
 
-    public void record(String name, String expiry, String condition) {
+    public void record(String name, String expiry, Condition condition) {
         throw new UnsupportedOperationException();
     }
 }

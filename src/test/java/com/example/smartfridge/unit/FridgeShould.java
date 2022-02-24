@@ -31,7 +31,7 @@ public class FridgeShould {
 
         //Then
         verify(clock).setDate(currentDate);
-    };
+    }
 
     @Test void
     update_items_expiry_date_when_door_is_opened(){
@@ -48,10 +48,11 @@ public class FridgeShould {
         //Given
         String name = "itemName";
         String expiry = "12/12/2020";
-        String condition = "sealed";
+        String conditionAsString = "sealed";
+        Condition condition = Condition.SEALED;
 
         //When
-        fridge.scanAddedItem(name, expiry, condition);
+        fridge.scanAddedItem(name, expiry, conditionAsString);
 
         //Then
         verify(itemsService).record(name, expiry, condition);

@@ -1,10 +1,11 @@
 package com.example.smartfridge;
 
-import java.util.List;
+import static org.yaml.snakeyaml.util.EnumUtils.findEnumInsensitiveCase;
+
 
 public class Fridge {
-    private Clock clock;
-    private ItemsService itemsService;
+    private final Clock clock;
+    private final ItemsService itemsService;
 
     public Fridge(Clock clock, ItemsService itemsService) {
         this.clock = clock;
@@ -20,7 +21,9 @@ public class Fridge {
     }
 
     public void scanAddedItem(String item, String expiry, String condition) {
-        itemsService.record(item, expiry, condition);
+        Condition itemCondition =  findEnumInsensitiveCase(Condition.class, condition);
+
+        itemsService.record(item, expiry, itemCondition);
     }
 
     public void signalFridgeDoorClosed() {
