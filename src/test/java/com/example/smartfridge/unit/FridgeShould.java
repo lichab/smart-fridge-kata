@@ -24,7 +24,7 @@ public class FridgeShould {
     @Test void
     set_the_given_date_as_current(){
         //Given
-        String currentDate = "18/10/2021";
+        String currentDate = "17/10/2021";
 
         //When
         fridge.setCurrentDate(currentDate);
